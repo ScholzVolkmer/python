@@ -76,6 +76,15 @@ action :remove do
   end
 end
 
+action :install_requirements do
+  description = "Installing packages from #{new_resource}"
+  converge_by(description) do
+    Chef::Log.info("Installing packages from #{new_resource}")
+    install_requirements_packages()
+    new_resource.updated_by_last_action(true)
+  end
+end
+
 def removing_package?
   if current_resource.version.nil?
     false # nothing to remove
@@ -148,6 +157,11 @@ end
 def remove_package(version)
   new_resource.options "#{new_resource.options} --yes"
   pip_cmd('uninstall')
+end
+
+def install_requirements_packages()
+  new_resource.options "#{new_resource.options} -r"
+  pip_cmd('install')
 end
 
 def pip_cmd(subcommand, version='')

@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-actions :install, :upgrade, :remove, :purge
+actions :install, :upgrade, :remove, :purge, :install_requirements
 default_action :install if defined?(default_action) # Chef > 10.8
 
 # Default action for Chef <= 10.8
