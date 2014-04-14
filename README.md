@@ -49,6 +49,7 @@ Install packages using the new hotness in Python package management...[`pip`](ht
 - :user: User to run pip as, for using with virtualenv
 - :group: Group to run pip as, for using with virtualenv
 - :purge: Purge a pip package (this usually entails removing configuration files as well as the package itself).  With pip packages this behaves the same as `:remove`
+- :install_requirements: Install requirements from the requirements file
 
 #### Attribute Parameters
 
